@@ -20,58 +20,58 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Dashboard Admin</h1>
+          <h1 className="text-2xl font-bold text-slate-900 mb-1">Dashboard Admin</h1>
           <p className="text-slate-500">Kelola semua artikel berita dari sini.</p>
         </div>
         <Link 
           to="/admin/create" 
-          className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors shadow-sm font-medium"
+          className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-md font-medium hover:bg-primary-hover transition-colors"
         >
-          <IconPlus className="w-5 h-5 mr-2" />
+          <IconPlus className="w-5 h-5" />
           Buat Artikel Baru
         </Link>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-slate-200">
-            <thead className="bg-slate-50">
+          <table className="w-full border-collapse">
+            <thead>
               <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Judul</th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Kategori</th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Penulis</th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Tanggal</th>
-                <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-slate-500 uppercase tracking-wider">Aksi</th>
+                <th className="bg-slate-50 p-4 text-xs font-semibold uppercase text-slate-500 border-b border-slate-200 w-[40%] text-left">Judul</th>
+                <th className="bg-slate-50 p-4 text-xs font-semibold uppercase text-slate-500 border-b border-slate-200 text-left">Kategori</th>
+                <th className="bg-slate-50 p-4 text-xs font-semibold uppercase text-slate-500 border-b border-slate-200 text-left">Penulis</th>
+                <th className="bg-slate-50 p-4 text-xs font-semibold uppercase text-slate-500 border-b border-slate-200 text-left">Tanggal</th>
+                <th className="bg-slate-50 p-4 text-xs font-semibold uppercase text-slate-500 border-b border-slate-200 text-right">Aksi</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-slate-200">
+            <tbody>
               {articles.map((article) => (
-                <tr key={article.id} className="hover:bg-slate-50 transition-colors">
-                  <td className="px-6 py-4">
-                    <div className="text-sm font-medium text-slate-900 line-clamp-1 max-w-xs" title={article.title}>{article.title}</div>
+                <tr key={article.id} className="hover:bg-slate-50">
+                  <td className="p-4 border-b border-slate-200">
+                    <div className="font-medium text-slate-900 line-clamp-1" title={article.title}>{article.title}</div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-slate-100 text-slate-800">
+                  <td className="p-4 border-b border-slate-200">
+                    <span className="text-xs px-2 py-1 bg-slate-100 rounded-full font-semibold text-slate-700">
                       {article.category}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500">
+                  <td className="p-4 border-b border-slate-200 text-sm text-slate-500">
                     {article.author}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500">
+                  <td className="p-4 border-b border-slate-200 text-sm text-slate-500">
                     {article.date}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <div className="flex items-center justify-end gap-3">
-                      <Link to={`/admin/edit/${article.id}`} className="text-indigo-600 hover:text-indigo-900 bg-indigo-50 p-2 rounded-md transition-colors">
+                  <td className="p-4 border-b border-slate-200 text-right">
+                    <div className="flex items-center justify-end gap-2">
+                      <Link to={`/admin/edit/${article.id}`} className="p-2 rounded text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors">
                         <IconEdit className="w-4 h-4" />
                       </Link>
                       <button 
                         onClick={() => handleDelete(article.id)}
-                        className="text-red-600 hover:text-red-900 bg-red-50 p-2 rounded-md transition-colors"
+                        className="p-2 rounded text-slate-500 hover:bg-red-50 hover:text-primary transition-colors"
                       >
                         <IconTrash className="w-4 h-4" />
                       </button>
@@ -81,7 +81,7 @@ const Dashboard: React.FC = () => {
               ))}
               {articles.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="px-6 py-12 text-center text-slate-500">
+                  <td colSpan={5} className="p-12 text-center text-slate-500">
                     Tidak ada artikel ditemukan.
                   </td>
                 </tr>

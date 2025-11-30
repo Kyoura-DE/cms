@@ -5,30 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nusantara News</title>
     <meta name="description" content="Portal berita terkini Indonesia dengan teknologi AI.">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Plus Jakarta Sans', sans-serif;
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+              serif: ['"Merriweather"', 'serif'],
+            },
+            colors: {
+              primary: {
+                DEFAULT: '#dc2626', // Red 600
+                hover: '#b91c1c',   // Red 700
+                light: '#fef2f2',   // Red 50
+              },
+              secondary: {
+                DEFAULT: '#4f46e5', // Indigo 600
+                hover: '#4338ca',   // Indigo 700
+                light: '#eef2ff',   // Indigo 50
+              }
+            }
+          }
+        }
       }
-      .article-body {
-        font-family: 'Merriweather', serif;
+    </script>
+    <script type="importmap">
+    {
+      "imports": {
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+        "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "react-helmet": "https://esm.sh/react-helmet@6.1.0?external=react,react-dom"
       }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react-helmet": "https://esm.sh/react-helmet@6.1.0?external=react,react-dom"
-  }
-}
-</script>
-</head>
-  <body class="bg-slate-50 text-slate-900 antialiased">
+    }
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased font-sans">
     <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
   </body>
 </html>

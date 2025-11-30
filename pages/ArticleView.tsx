@@ -18,8 +18,8 @@ const ArticleView: React.FC = () => {
     setLoading(false);
   }, [id]);
 
-  if (loading) return <div className="text-center py-20">Memuat...</div>;
-  if (!article) return <div className="text-center py-20">Artikel tidak ditemukan.</div>;
+  if (loading) return <div className="text-center py-16 text-slate-500">Memuat...</div>;
+  if (!article) return <div className="text-center py-16 text-slate-500">Artikel tidak ditemukan.</div>;
 
   return (
     <article className="max-w-3xl mx-auto">
@@ -30,43 +30,45 @@ const ArticleView: React.FC = () => {
         type="article"
       />
       
-      <Link to="/" className="inline-flex items-center text-slate-500 hover:text-red-600 mb-6 transition-colors">
-        <IconArrowLeft className="w-4 h-4 mr-2" />
+      <Link to="/" className="inline-flex items-center gap-1 text-slate-500 hover:text-slate-900 mb-6 pl-0">
+        <IconArrowLeft className="w-4 h-4" />
         Kembali ke Beranda
       </Link>
 
       <header className="mb-8">
-        <div className="flex items-center gap-2 mb-4">
-          <span className="px-3 py-1 bg-red-50 text-red-600 rounded-full text-xs font-semibold uppercase tracking-wide">
+        <div className="flex items-center gap-3 text-xs md:text-sm mb-4">
+          <span className="bg-primary-light text-primary px-3 py-1 rounded-full font-semibold uppercase">
             {article.category}
           </span>
-          <span className="text-slate-400 text-xs">•</span>
-          <span className="text-slate-500 text-xs font-medium">{article.date}</span>
+          <span className="text-slate-400">•</span>
+          <span className="text-slate-500">{article.date}</span>
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight mb-6">
+        
+        <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-6 text-slate-900">
           {article.title}
         </h1>
-        <div className="flex items-center gap-3 border-b border-slate-100 pb-8">
-          <div className="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 font-bold">
+        
+        <div className="flex items-center gap-3 pb-8 border-b border-slate-200">
+          <div className="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500 text-sm">
             {article.author.charAt(0)}
           </div>
           <div>
-            <p className="text-sm font-semibold text-slate-900">{article.author}</p>
+            <p className="font-semibold text-slate-900 text-sm">{article.author}</p>
             <p className="text-xs text-slate-500">Jurnalis Nusantara News</p>
           </div>
         </div>
       </header>
 
-      <div className="mb-10 rounded-xl overflow-hidden shadow-sm">
-        <img src={article.imageUrl} alt={article.title} className="w-full h-auto object-cover" />
+      <div className="rounded-xl overflow-hidden mb-10 shadow-md">
+        <img src={article.imageUrl} alt={article.title} className="w-full h-auto block" />
       </div>
 
-      <div className="article-body prose prose-lg prose-slate max-w-none text-slate-700 leading-relaxed whitespace-pre-wrap">
+      <div className="font-serif text-lg leading-loose text-slate-700 whitespace-pre-wrap">
         {article.content}
       </div>
       
-      <div className="mt-12 pt-8 border-t border-slate-200">
-        <p className="text-center text-sm text-slate-500 italic">
+      <div className="mt-12 pt-8 border-t border-slate-200 text-center">
+        <p className="text-sm text-slate-500 italic">
           Akhir dari artikel. Terima kasih telah membaca.
         </p>
       </div>
